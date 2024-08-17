@@ -39,7 +39,7 @@ main {
 }
 
 #search-history button {
-    display: block;
+    display: inline;
     margin: 5px 0;
     padding: 10px;
     width: 200px;

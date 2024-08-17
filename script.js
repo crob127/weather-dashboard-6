@@ -70,14 +70,19 @@ function saveSearchHistory(city) {
 
 function updateSearchHistory(city) {
     const historyContainer = document.getElementById('search-history');
-    historyContainer.innerHTML = '';
-    let history = JSON.parse(localStorage.getItem('searcHistory')) || [];
+    let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
     history.forEach(city => {
         const cityButton = document.createElement('button');
         cityButton.textContent = city;
-        cityButton.addEventListener('click', () => getCoordinates(city));
+        cityButton.classList.add('history-button');
+        cityButton.addEventListener('click', () => {
+            getCoordinates(city); // Fetch weather for clicked city
+        });
         historyContainer.appendChild(cityButton);
-    });
+    })
 }
 
-updateSearchHistory();
+window.addEventListener('load', () => {
+    updateSearchHistory();
+})
