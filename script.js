@@ -8,7 +8,7 @@ document.getElementById('search-button').addEventListener('click', function() {
  });
 
 function getCoordinates(city) {
-    const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+    const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     fetch(geoUrl)
     .then(response => response.json())
     .then(data => {
@@ -38,7 +38,7 @@ function updateCurrentWeather(data,city) {
     document.getElementById('current-temp').textContent = current.main.temp;
     document.getElementById('current-wind').textContent = current.wind.speed;
     document.getElementById('current-humidity').textContent = current.main.humidity;
-    document.getElementById('current-icon').src = `http://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
+    document.getElementById('current-icon').src = `https://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
 }
 
 function updateForecast(data) {
@@ -50,7 +50,7 @@ function updateForecast(data) {
         forecastDay.classList.add('forecast-day');
         forecastDay.innerHTML = `
             <p>${new Date(dayData.dt_txt).toLocaleDateString()}</p>
-            <img src="http://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" alt="Weather Icon">
+            <img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" alt="Weather Icon">
             <p>Temp: ${dayData.main.temp} °F</p>
             <p>Wind: ${dayData.wind.speed} MPH</p>
             <p>Humidity: ${dayData.main.humidity} %</p>
